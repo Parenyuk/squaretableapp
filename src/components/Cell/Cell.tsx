@@ -16,7 +16,7 @@ export const Cell: FC<CellPropsType> = ({index}) => {
     const [cellName, setCellName] = useState([])
     const dispatch = useDispatch()
 
-    let selectedField = useSelector<AppStateType, number>(state => state.squareTablePage.selectedField);
+    let selectedField = useSelector<AppStateType, number>(state => state.squareTablePage?.selectedField);
 
     const firstRow = [0,1,2,3,4];
     const secondRow = [5,6,7,8,9];
@@ -55,10 +55,13 @@ export const Cell: FC<CellPropsType> = ({index}) => {
 
 
      const onMouseEnter = () => {
-         setIsShown(true)
-             dispatch(setCellNameToHistoryBlockTC(index))
+        if(selectedField) {
+            setIsShown(true)
+            dispatch(setCellNameToHistoryBlockTC(index))
 
-         }
+        }
+        }
+
 
 
     // const onMouseEnter = () => {

@@ -17,7 +17,7 @@ export const SquareTable = () => {
 
 
     return (
-        <div className={field === 5 ? s.squareTableFive : 10 ? s.squareTableTen : 15 ? s.squareTableFifteen : ''}>
+        <div className={selectedField === 5 ? s.squareTableFive : 10 ? s.squareTableTen : 15 ? s.squareTableFifteen : ''}>
             {
                 Array(selectedField === 5 ? 25 : 10 ? 100 : 15 ? 225 : '' ).fill(undefined).map((c: any, i: number) => <Cell key={i} index={i}/>)
             }
