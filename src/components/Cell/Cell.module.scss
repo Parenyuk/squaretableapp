@@ -1,0 +1,12 @@
+.cell {
+  background-color: grey;
+  margin-bottom: -1px;
+  margin-right: -1px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  &:hover {
+    background-color: #03A8F4;
+  }
+}
