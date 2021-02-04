@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, {FC, useEffect, useState} from 'react';
 import s from './Cell.module.scss'
 import {useDispatch, useSelector} from 'react-redux';

@@ -2,8 +2,8 @@
 import React, {MouseEvent, FC, useState} from 'react';
 import s from './SelectMode.module.scss'
 import {useDispatch, useSelector} from 'react-redux';
-import {getFieldTC} from '../../redux/squareTableReducer';
-import {AppStateType} from '../../redux/store';
+import {getFieldTC, resetCellNameInHistoryBlockTC} from '../../redux/squareTableReducer';
+
 
 
 type CellPropsType = {
@@ -18,12 +18,11 @@ export const SelectMode: FC<CellPropsType> = () => {
     const onSelectValue = (e:  MouseEvent<HTMLButtonElement, MouseEvent>) => {
         let selectField = +(e.currentTarget.value)
         setField(selectField)
-        console.log(selectField)
-      //   dispatch(getFieldTC(selectField))
     }
 
     const dispatchSelectField = () => {
         dispatch(getFieldTC(field))
+        dispatch(resetCellNameInHistoryBlockTC())
     }
 
     return (

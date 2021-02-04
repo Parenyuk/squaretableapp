@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, {useEffect, useState} from 'react';
 import s from './SquareTable.module.scss'
 import {Cell} from '../Cell/Cell';
@@ -11,7 +10,7 @@ export const SquareTable = () => {
     let selectedField = useSelector<AppStateType, number>(state => state.squareTablePage.selectedField)
 
     let style = selectedField === 5 ? s.squareTableFive : selectedField === 10 ? s.squareTableTen
-        : selectedField === 15 ?  s.squareTableFifteen : null
+        : selectedField === 15 ?  s.squareTableFifteen : undefined
 
     return (
             <div className={style}>

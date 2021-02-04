@@ -24,3 +24,5 @@ store.subscribe(() => {
         squareTablePage: store.getState().squareTablePage
     });
 }); // add Local Storage to project
+
+

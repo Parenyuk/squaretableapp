@@ -8,6 +8,6 @@ const instance = axios.create({
 
 export const squareFieldApi = {
     getFieldNumber() {
-        return instance.get<any>(``)
+        return instance.get<ResponseType>(``)
     },
 }

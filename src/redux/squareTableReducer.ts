@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {AppStateType, InferActionTypes} from './store';
 import {ThunkAction, ThunkDispatch} from 'redux-thunk';
 import {squareFieldApi} from '../api/api';
@@ -6,6 +7,7 @@ const SET_FIVE_FIELD = 'SQUARE_TABLE_REDUCER/SET_FIVE_FIELD';
 const SET_TEN_FIELD = 'SQUARE_TABLE_REDUCER/SET_TEN_FIELD';
 const SET_FIFTEEN_FIELD = 'SQUARE_TABLE_REDUCER/SET_FIFTEEN_FIELD';
 const SET_CELL_VALUE = 'SQUARE_TABLE_REDUCER/SET_CELL_VALUE';
+const RESET_CELL_VALUE = 'SQUARE_TABLE_REDUCER/RESET_CELL_VALUE';
 
 let initialState = {
     selectedField: 5,
@@ -24,6 +26,8 @@ export const squareTableReducer = (state = initialState, action: ActionType): In
             return {...state, selectedField: action.fifteenField}
         case SET_CELL_VALUE:
               return {  ...state, arrayCellValue: [...state.arrayCellValue.slice(-4), action.cellName] }
+        case RESET_CELL_VALUE:
+            return initialState
         default:
             return state
     }
@@ -43,8 +47,10 @@ export const actions = {
         return ({type: SET_FIFTEEN_FIELD, fifteenField} as const)
     },
     setCellValueAC: (cellName: number) => {
-        //  debugger
         return ({type: SET_CELL_VALUE, cellName} as const)
+    },
+    resetCellValueAC: () => {
+        return ({type: RESET_CELL_VALUE, } as const)
     },
 }
 
@@ -144,6 +150,13 @@ export const setCellNameToHistoryBlockTC = (index: number ): ThunkType => async 
     try {
         dispatch(actions.setCellValueAC(index))
 
+    } catch (e) {
+
+    }
+}
+export const resetCellNameInHistoryBlockTC = () => async (dispatch: ThunkDispatch<AppStateType, unknown, ActionType>) => {
+    try {
+        dispatch(actions.resetCellValueAC())
     } catch (e) {
 
     }
