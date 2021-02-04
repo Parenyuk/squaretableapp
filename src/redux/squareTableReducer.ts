@@ -9,7 +9,7 @@ const SET_CELL_VALUE = 'SQUARE_TABLE_REDUCER/SET_CELL_VALUE';
 
 let initialState = {
     selectedField: 5,
-    arrayCellValue: [] as Array<string>,
+    arrayCellValue: [] as Array<number>,
 }
 
 type InitialStateType = typeof initialState;
@@ -22,14 +22,8 @@ export const squareTableReducer = (state = initialState, action: ActionType): In
             return {...state, selectedField: action.tenField}
         case SET_FIFTEEN_FIELD:
             return {...state, selectedField: action.fifteenField}
-
         case SET_CELL_VALUE:
-            // debugger
-            // let a = {
               return {  ...state, arrayCellValue: [...state.arrayCellValue.slice(-4), action.cellName] }
-              // return  {...state, arrayCellValue: action.cellName}
-
-            // return a
         default:
             return state
     }
@@ -48,7 +42,7 @@ export const actions = {
     setFifteenFieldAC: (fifteenField: number) => {
         return ({type: SET_FIFTEEN_FIELD, fifteenField} as const)
     },
-    setCellValueAC: (cellName: string) => {
+    setCellValueAC: (cellName: number) => {
         //  debugger
         return ({type: SET_CELL_VALUE, cellName} as const)
     },
@@ -100,46 +94,55 @@ const fifthCol = [4,9,14,19,24]
 //         return indexRowName = 'row5'
 //     }
 
-export const setCellNameToHistoryBlockTC = (selectedField: number, index: number ): ThunkType => async (dispatch: ThunkDispatch<AppStateType, unknown, ActionType>) => {
-        // debugger
-        let indexRowName = '';
-        let indexColName = ''
+// export const setCellNameToHistoryBlockTC = (selectedField: number, index: number ): ThunkType => async (dispatch: ThunkDispatch<AppStateType, unknown, ActionType>) => {
+//         // debugger
+//         let indexRowName = '';
+//         let indexColName = ''
+//     try {
+//         if (firstRow.filter(el => el === index)) {
+//             // debugger
+//             return indexRowName = 'row1'
+//         }
+//         if  (selectedField === 5 && index === secondRow.find(el => el === index)) {
+//             return indexRowName = 'row2'
+//         }
+//         if (selectedField === 5 && index === thirdRow.find(el => el === index)) {
+//             return indexRowName = 'row3'
+//         }
+//         if (selectedField === 5 && index === fourthRow.find(el => el === index)) {
+//             return indexRowName = 'row4'
+//         }
+//         if (selectedField === 5 && index === fifthRow.find(el => el === index)) {
+//             return indexRowName = 'row5'
+//         }
+//         if (selectedField === 5 && index === firstCol.find(el => el === index)) {
+//             return indexColName = 'col1'
+//         }
+//         if (selectedField === 5 && index === secondCol.find(el => el === index)) {
+//             return indexColName = 'col1'
+//         }
+//         if (selectedField === 5 && index === thirdCol.find(el => el === index)) {
+//             return indexColName = 'col1'
+//         }
+//         if (selectedField === 5 && index === fourthCol.find(el => el === index)) {
+//             return indexColName = 'col1'
+//         }
+//         if (selectedField === 5 && index === fifthCol.find(el => el === index)) {
+//             return indexColName = 'col1'
+//         }
+//         let cellname = indexRowName + indexColName;
+//         // debugger;
+//         console.log(cellname)
+//         dispatch(actions.setCellValueAC(cellname))
+//
+//     } catch (e) {
+//
+//     }
+// }
+
+export const setCellNameToHistoryBlockTC = (index: number ): ThunkType => async (dispatch: ThunkDispatch<AppStateType, unknown, ActionType>) => {
     try {
-        if (firstRow.filter(el => el === index)) {
-            // debugger
-            return indexRowName = 'row1'
-        }
-        if  (selectedField === 5 && index === secondRow.find(el => el === index)) {
-            return indexRowName = 'row2'
-        }
-        if (selectedField === 5 && index === thirdRow.find(el => el === index)) {
-            return indexRowName = 'row3'
-        }
-        if (selectedField === 5 && index === fourthRow.find(el => el === index)) {
-            return indexRowName = 'row4'
-        }
-        if (selectedField === 5 && index === fifthRow.find(el => el === index)) {
-            return indexRowName = 'row5'
-        }
-        if (selectedField === 5 && index === firstCol.find(el => el === index)) {
-            return indexColName = 'col1'
-        }
-        if (selectedField === 5 && index === secondCol.find(el => el === index)) {
-            return indexColName = 'col1'
-        }
-        if (selectedField === 5 && index === thirdCol.find(el => el === index)) {
-            return indexColName = 'col1'
-        }
-        if (selectedField === 5 && index === fourthCol.find(el => el === index)) {
-            return indexColName = 'col1'
-        }
-        if (selectedField === 5 && index === fifthCol.find(el => el === index)) {
-            return indexColName = 'col1'
-        }
-        let cellname = indexRowName + indexColName;
-        // debugger;
-        console.log(cellname)
-        dispatch(actions.setCellValueAC(cellname))
+        dispatch(actions.setCellValueAC(index))
 
     } catch (e) {
 

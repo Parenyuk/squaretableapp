@@ -11,7 +11,6 @@ export const HistoryItem: FC<CellPropsType> = () => {
 
     const cellSelected = useSelector<AppStateType, any>(state => state.squareTablePage.arrayCellValue)
 
-   // console.log(cellSelected)
 
     const cellRenderSelected = cellSelected?.map((item: string, index: number) => {
         return (
@@ -23,9 +22,8 @@ export const HistoryItem: FC<CellPropsType> = () => {
 
 
     return (
-        <div>
-            { cellRenderSelected}
-            {/*{cellSelected && cellSelected}*/}
+        <div className={s.cellRenderSelected}>
+            {cellRenderSelected}
         </div>
     )
 }

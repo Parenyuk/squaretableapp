@@ -21,9 +21,7 @@ export const Cell: FC<CellPropsType> = ({index}) => {
      const onMouseEnter = () => {
         if(selectedField) {
             setIsShown(true)
-            dispatch(setCellNameToHistoryBlockTC(selectedField, index))
-            // debugger
-
+            dispatch(setCellNameToHistoryBlockTC(index))
         }
         }
 
