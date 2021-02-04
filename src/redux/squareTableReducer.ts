@@ -9,8 +9,7 @@ const SET_CELL_VALUE = 'SQUARE_TABLE_REDUCER/SET_CELL_VALUE';
 
 let initialState = {
     selectedField: 5,
-    arrayCellValue: [] as Array<number>,
-   // arrayCellValue: 'wer' as string,
+    arrayCellValue: [] as Array<string>,
 }
 
 type InitialStateType = typeof initialState;
@@ -49,7 +48,7 @@ export const actions = {
     setFifteenFieldAC: (fifteenField: number) => {
         return ({type: SET_FIFTEEN_FIELD, fifteenField} as const)
     },
-    setCellValueAC: (cellName: number) => {
+    setCellValueAC: (cellName: string) => {
         //  debugger
         return ({type: SET_CELL_VALUE, cellName} as const)
     },
@@ -73,9 +72,72 @@ export const getFieldTC = (selectField: number): ThunkType => async (dispatch: T
     }
 }
 
+const firstRow = [0,1,2,3,4];
+const secondRow = [5,6,7,8,9];
+const thirdRow = [10, 11, 12, 13, 14];
+const fourthRow = [15,16,17,18,19];
+const fifthRow = [20,21,22,23,24];
 
-export const setCellNameToHistoryBlockTC = (cellname: number): ThunkType => async (dispatch: ThunkDispatch<AppStateType, unknown, ActionType>) => {
+const firstCol = [0, 5, 10, 15, 20];
+const secondCol = [1, 6, 11, 16, 21];
+const thirdCol = [2,7,12,17,22]
+const fourthCol = [3,8,13,18,23]
+const fifthCol = [4,9,14,19,24]
+
+//     if(index === firstRow.find(el => el === index))  {
+//         return indexRowName = 'row1'
+//     }
+//     else if(index === secondRow.find(el => el === index))  {
+//         return indexRowName = 'row2'
+//     }
+//    else if(index === thirdRow.find(el => el === index))  {
+//         return indexRowName = 'row3'
+//     }
+//     else if(index === fourthRow.find(el => el === index))  {
+//         return indexRowName = 'row4'
+//     }
+//    else if(index === fifthRow.find(el => el === index))  {
+//         return indexRowName = 'row5'
+//     }
+
+export const setCellNameToHistoryBlockTC = (selectedField: number, index: number ): ThunkType => async (dispatch: ThunkDispatch<AppStateType, unknown, ActionType>) => {
+        // debugger
+        let indexRowName = '';
+        let indexColName = ''
     try {
+        if (firstRow.filter(el => el === index)) {
+            // debugger
+            return indexRowName = 'row1'
+        }
+        if  (selectedField === 5 && index === secondRow.find(el => el === index)) {
+            return indexRowName = 'row2'
+        }
+        if (selectedField === 5 && index === thirdRow.find(el => el === index)) {
+            return indexRowName = 'row3'
+        }
+        if (selectedField === 5 && index === fourthRow.find(el => el === index)) {
+            return indexRowName = 'row4'
+        }
+        if (selectedField === 5 && index === fifthRow.find(el => el === index)) {
+            return indexRowName = 'row5'
+        }
+        if (selectedField === 5 && index === firstCol.find(el => el === index)) {
+            return indexColName = 'col1'
+        }
+        if (selectedField === 5 && index === secondCol.find(el => el === index)) {
+            return indexColName = 'col1'
+        }
+        if (selectedField === 5 && index === thirdCol.find(el => el === index)) {
+            return indexColName = 'col1'
+        }
+        if (selectedField === 5 && index === fourthCol.find(el => el === index)) {
+            return indexColName = 'col1'
+        }
+        if (selectedField === 5 && index === fifthCol.find(el => el === index)) {
+            return indexColName = 'col1'
+        }
+        let cellname = indexRowName + indexColName;
+        // debugger;
         console.log(cellname)
         dispatch(actions.setCellValueAC(cellname))
 
