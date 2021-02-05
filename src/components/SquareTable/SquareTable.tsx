@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import s from './SquareTable.module.scss'
 import {Cell} from '../Cell/Cell';
 import {useSelector} from 'react-redux';
 import {AppStateType} from '../../redux/store';
-
 
 export const SquareTable = () => {
 
@@ -15,8 +14,7 @@ export const SquareTable = () => {
     return (
             <div className={style}>
                 {
-                    Array(selectedField === 5 ? 25 : selectedField === 10 ? 100
-                        : selectedField ===  15 ? 225 : 0 ).fill(undefined)
+                    Array.from({length: selectedField**2})
                         .map((c: any, i: number) => <Cell key={i} index={i}/>)
                 }
         </div>

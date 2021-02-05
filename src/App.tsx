@@ -20,15 +20,13 @@ function App() {
             <div>
                 <SelectMode/>
                 <div className={style}>
-                    <SquareTable />
+                    <SquareTable/>
                 </div>
             </div>
-           <div>
-               <HistoryBlock/>
-           </div>
+            <div>
+                <HistoryBlock/>
+            </div>
         </div>
-
-
     );
 }
 

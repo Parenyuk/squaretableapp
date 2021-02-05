@@ -1,6 +1,5 @@
 import {AppStateType} from '../../redux/store';
 
-
 export const loadState = () => {
     try {
         const serializedState = localStorage.getItem('state');
